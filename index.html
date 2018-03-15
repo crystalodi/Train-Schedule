@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" integrity="sha256-e22BQKCF7bb/h/4MFJ1a4lTRR2OuAe8Hxa/3tgU5Taw="
+    crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" integrity="sha256-uWtSXRErwH9kdJTIr1swfHFJn/d/WQ6s72gELOHXQGM="
+    crossorigin="anonymous"></script>
+  <title>Train Schedule</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h1>Train Schedule</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <table>
+          <thead>
+            <th>Train Name</th>
+            <th>Destination</th>
+            <th>Frequency</th>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field">
+          <input type="text" name="trainName-input" id="trainName-input" placeholder="Train Name" required>
+          <label for="trainName-input">Train Name</label>
+        </div>
+        <div class="input-field">
+          <input type="text" name="destination-input" id="destination-input" placeholder="Destination" required>
+          <label for="destination-input">Destination</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="time-input" class="time-picker">
+          <label for="time-input">First Train Time</label>
+        </div>
+        <div class="input-field">
+          <input type="number" id="frequency-input" min="10" max="60">
+          <label for="frequency-input">Frequency in minutes</label>
+        </div>
+        <div class="input-field">
+          <input type="submit" value="Add Train" class="btn grey waves-effect waves-light" id="addTrain-button" required>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/javascript/app.js"></script>
+</body>
+
+</html>
