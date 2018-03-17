@@ -16,10 +16,26 @@ var database = firebase.database();
 
 $("#addTrain-button").on("click", function(event){
   event.preventDefault();
-  var name = $("#trainName-input").val();
-  var destination = $("#destination-input").val();
-  var time = $("#time-input").val();
-  var frequency = $("#frequency-input").val();
+  var name = $("#trainName-input").val().trim();
+  var destination = $("#destination-input").val().trim();
+  var time = $("#time-input").val().trim();
+  var frequency = $("#frequency-input").val().trim();
+  if(name === "") {
+    $("#trainName-input").focus();
+    return;
+  }
+  if(destination === "") {
+    $("#destination-input").focus();
+    return;
+  }
+  if(time === "") {
+    $("#time-input").focus();
+    return;
+  }
+  if(frequency === "") {
+    $("#frequency-input").focus();
+    return;
+  }
   var newChild = {
     name: name,
     destination: destination,
