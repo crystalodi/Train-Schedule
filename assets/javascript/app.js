@@ -1,7 +1,6 @@
 $(".time-picker").pickatime({
-  twelvehour:false,
-  autoclose:true
-
+  twelvehour: false,
+  autoclose: true
 });
 var config = {
   apiKey: "AIzaSyA336_CJKjqkXnlyF_3QabmLyKKlfv79WE",
@@ -14,51 +13,57 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-$("#addTrain-button").on("click", function(event){
+$("#addTrain-button").on("click", function(event) {
   event.preventDefault();
   var name = $("#trainName-input").val().trim();
   var destination = $("#destination-input").val().trim();
   var time = $("#time-input").val().trim();
   var frequency = $("#frequency-input").val().trim();
-  if(name === "") {
+  if (name === "") {
     $("#trainName-input").focus();
     return;
   }
-  if(destination === "") {
+  if (destination === "") {
     $("#destination-input").focus();
     return;
   }
-  if(time === "") {
+  if (time === "") {
     $("#time-input").focus();
     return;
   }
-  if(frequency === "") {
+  if (frequency === "") {
     $("#frequency-input").focus();
     return;
   }
+  var unixTime = moment(time, "HH:mm").subtract(1, "years").format("X");
   var newChild = {
     name: name,
     destination: destination,
-    time:time,
+    time: unixTime,
+    stringTime: time,
     frequency: frequency,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
-  }
+  };
   database.ref().push(newChild);
   $("#trainName-input").val("");
   $("#destination-input").val("");
   $("#time-input").val("");
   $("#frequency-input").val("");
-})
+});
 
-database.ref().on("child_added", function(childSnap){
-  console.log(childSnap.val())
-  var tBody = $('tbody');
-  var tr = $('<tr>');
+database.ref().on("child_added", function(childSnap) {
+  console.log(childSnap.val());
+  var tBody = $("tbody");
+  var tr = $("<tr>");
   tBody.append(tr);
-  var tdName = $('<td>').text(childSnap.val().name)
-  tr.append(tdName);
-  var tdDestination = $('<td>').text(childSnap.val().destination)
-  tr.append(tdDestination);
-  var tdFrequency = $('<td>').text(childSnap.val().frequency)
-  tr.append(tdFrequency);
-})
+  tr.append($("<td>").text(childSnap.val().name));
+  tr.append($("<td>").text(childSnap.val().destination));
+  tr.append($("<td>").text(childSnap.val().frequency));
+  var diffTime = moment().diff(moment.unix(childSnap.val().time), "minutes");
+  var tRemainder = diffTime % parseInt(childSnap.val().frequency);
+  var tMinutesTillTrain = parseInt(childSnap.val().frequency) - tRemainder;
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  var nextTrainArrival = moment(nextTrain).format("hh:mm A");
+  tr.append($("<td>").text(nextTrainArrival));
+  tr.append($("<td>").text(tMinutesTillTrain));
+});
