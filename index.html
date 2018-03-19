@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <table>
+        <table class="bordered highlight responsive-table">
           <thead>
             <th>Train Name</th>
             <th>Destination</th>
@@ -42,28 +42,28 @@
       <div class="col s12">
         <form id="train-form">
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12">
               <input type="text" name="trainName-input" id="trainName-input" required>
               <label for="trainName-input" data-error="Train Name is required">Train Name</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12">
               <input type="text" name="destination-input" id="destination-input" required>
               <label for="destination-input" data-error="Destination is required">Destination</label>
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
               <input type="text" id="time-input" class="time-picker" required>
               <label for="time-input">First Train Time</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
               <input type="number" id="frequency-input" min="10" max="60" required>
               <label for="frequency-input">Frequency in minutes</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <button class="btn grey waves-effect waves-light center-align" id="addTrain-button">
+              <button class="btn blue waves-effect waves-light center-align" id="addTrain-button">
                 <i class="material-icons left">add_circle</i> Add Train
               </button>
             </div>
@@ -71,6 +71,7 @@
         </form>
       </div>
     </div>
+
   </div>
 
   <script src="./assets/javascript/app.js"></script>
