@@ -40,11 +40,12 @@ explorer .
 ```
 
 Open the `index.html` file by double clicking on it. The app will open in a web browser and should look like this:
-
+![Home](https://raw.githubusercontent.com/crystalodi/Train-Schedule/master/assets/images/home.png)
 
 ### Folder Structure
 
 After following the instructions in the installation section, the contents of the `/Train-Schedule` will look like this
+
 
 ```
 │   index.html
@@ -54,11 +55,20 @@ After following the instructions in the installation section, the contents of th
     └───javascript
             app.js
 ```
-
+* `index.html` Contains the ui for the front end. Contains table to display train information and form to insert train information into firebase database.
+* `assets/javascript/app.js` Contains logic to load all train schedule information from firebase database on after the app is done loading and calculates Next Train Arrival using MomentJS. Also contains logic to insert new train into firebase database after Add Train button is clicked.
 
 ## How to Use
 
 ### Adding a Train
+
+Fill out Train Name, Destination, First Train Time, and Frequency in minutes fields in form below Train Schedule table
+
+![Fill out form](https://raw.githubusercontent.com/crystalodi/Train-Schedule/master/assets/images/add_train_1.png)
+
+Press the "Add Train" button and the newly added train should display in the Train Schedule table.
+
+![Added Train](https://raw.githubusercontent.com/crystalodi/Train-Schedule/master/assets/images/add_train_2.png)
 
 ## Built With
 
