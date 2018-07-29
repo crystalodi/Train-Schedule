@@ -51,7 +51,6 @@ After following the instructions in the installation section, the contents of th
 │   README.md
 │
 └───assets
-    ├───css
     └───javascript
             app.js
 ```
